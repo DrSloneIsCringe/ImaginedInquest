@@ -2910,7 +2910,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "2";
+	app.meta.h["build"] = "3";
 	app.meta.h["company"] = "ninjamuffin99";
 	app.meta.h["file"] = "Funkin";
 	app.meta.h["name"] = "Friday Night Funkin'";
@@ -16540,7 +16540,7 @@ TitleState.prototype = $extend(MusicBeatState.prototype,{
 			new flixel_util_FlxTimer().start(2,function(tmr) {
 				var version = "v" + lime_app_Application.current.meta.h["version"];
 				if(StringTools.trim(version) != StringTools.trim(NGio.GAME_VER_NUMS) && !OutdatedSubState.leftState) {
-					var nextState = new TitleState();
+					var nextState = new MainMenuState();
 					if(flixel_FlxG.game._state.switchTo(nextState)) {
 						flixel_FlxG.game._requestedState = nextState;
 					}
@@ -60387,7 +60387,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 222430;
+	this.version = 104807;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
