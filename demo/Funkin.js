@@ -2910,7 +2910,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "3";
+	app.meta.h["build"] = "4";
 	app.meta.h["company"] = "ninjamuffin99";
 	app.meta.h["file"] = "Funkin";
 	app.meta.h["name"] = "Friday Night Funkin'";
@@ -4750,7 +4750,7 @@ var Main = function() {
 	this.skipSplash = true;
 	this.framerate = 60;
 	this.zoom = -1;
-	this.initialState = TitleState;
+	this.initialState = MainMenuState;
 	this.gameHeight = 720;
 	this.gameWidth = 1280;
 	openfl_display_Sprite.call(this);
@@ -48156,7 +48156,20 @@ $hxClasses["flixel.tweens.FlxTweenManager"] = flixel_tweens_FlxTweenManager;
 flixel_tweens_FlxTweenManager.__name__ = "flixel.tweens.FlxTweenManager";
 flixel_tweens_FlxTweenManager.__super__ = flixel_FlxBasic;
 flixel_tweens_FlxTweenManager.prototype = $extend(flixel_FlxBasic.prototype,{
-	add_flixel_tweens_misc_NumTween: function(Tween,Start) {
+	add_flixel_tweens_misc_VarTween: function(Tween,Start) {
+		if(Start == null) {
+			Start = false;
+		}
+		if(Tween == null) {
+			return null;
+		}
+		this._tweens.push(Tween);
+		if(Start) {
+			Tween.start();
+		}
+		return Tween;
+	}
+	,add_flixel_tweens_misc_NumTween: function(Tween,Start) {
 		if(Start == null) {
 			Start = false;
 		}
@@ -48170,19 +48183,6 @@ flixel_tweens_FlxTweenManager.prototype = $extend(flixel_FlxBasic.prototype,{
 		return Tween;
 	}
 	,add_flixel_tweens_FlxTween: function(Tween,Start) {
-		if(Start == null) {
-			Start = false;
-		}
-		if(Tween == null) {
-			return null;
-		}
-		this._tweens.push(Tween);
-		if(Start) {
-			Tween.start();
-		}
-		return Tween;
-	}
-	,add_flixel_tweens_misc_VarTween: function(Tween,Start) {
 		if(Start == null) {
 			Start = false;
 		}
@@ -60387,7 +60387,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 104807;
+	this.version = 540719;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
